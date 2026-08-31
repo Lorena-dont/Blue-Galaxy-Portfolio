@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorena Lopez | Portafolio Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #030008;
+            --card-bg: rgba(18, 12, 28, 0.65);
+            --text-color: #e2e8f0;
+            --text-muted: #a0a5b5;
+            --accent-color: #d946ef;
+            --accent-pink: #c084fc;
+            --btn-gradient: linear-gradient(90deg, #ff3b75 0%, #ff8a00 100%);
+            --whatsapp-color: #33b31a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, .logo, .fancy-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 6%;
+            background-color: rgba(3, 0, 8, 0.4);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #fff;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 4px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 140px 5% 60px 5%;
+            overflow: hidden;
+        }
+
+        #galaxy-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 750px;
+            background: var(--card-bg);
+            padding: 4rem 3rem;
+            border-radius: 28px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(217, 70, 239, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8),
+                        0 0 30px rgba(168, 85, 247, 0.15);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #c084fc;
+            margin-bottom: 1.2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .divider-sparkle {
+            color: var(--accent-pink);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-gradient {
+            background: var(--btn-gradient);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(255, 59, 117, 0.4);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 59, 117, 0.6);
+        }
+
+        .btn-outline {
+            background: rgba(15, 10, 26, 0.6);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-color);
+            background: rgba(217, 70, 239, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* SECCIÓN SOBRE MÍ */
+        .about-section {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 4rem 5% 3rem 5%;
+        }
+
+        .section-title-wrapper h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .section-title-wrapper h2 span {
+            color: #c084fc;
+            font-style: italic;
+        }
+
+        .about-description {
+            max-width: 650px;
+            margin: 1.5rem auto 0 auto;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* SECCIÓN HABILIDADES (CARDS DE LA IMAGEN) */
+        .skills-section {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 3rem 5% 5rem 5%;
+        }
+
+        .skills-carousel-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav-arrow {
+            background: transparent;
+            border: none;
+            color: #c084fc;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.2);
+        }
+
+        .skills-grid {
+            display: flex;
+            gap: 1.2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1rem 0.5rem;
+        }
+
+        .skills-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .skill-card {
+            min-width: 120px;
+            height: 140px;
+            background: rgba(15, 10, 26, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(217, 70, 239, 0.2);
+        }
+
+        .skill-card i {
+            font-size: 2.8rem;
+        }
+
+        .skill-card span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .dots-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+
+        /* CONTACTO & FOOTER */
+        .contact-section {
+            background-color: #030008;
+            text-align: center;
+            border-top: 1px solid rgba(168, 85, 247, 0.15);
+            padding: 5rem 5% 2rem 5%;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .contact-btn.whatsapp { background-color: var(--whatsapp-color); }
+        .contact-btn.email { background-color: #183fbe; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content { padding: 2.5rem 1.5rem; }
+            .skills-grid { max-width: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">LORENA LOPEZ</a>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <canvas id="galaxy-canvas"></canvas>
+        <div class="hero-content">
+            <h1>Lorena Lopez</h1>
+            <h2>Desarrolladora Web</h2>
+            <div class="divider-sparkle">✦ ─── ✦</div>
+            <p>Creo experiencias digitales modernas, funcionales y visualmente impactantes. Apasionada por el código y el diseño.</p>
+            <div class="btn-group">
+                <a href="proyectos.html" class="btn btn-gradient">Ver Proyectos <i class="fa-solid fa-chevron-right"></i></a>
+                <a href="#sobre-mi" class="btn btn-outline">Sobre Mí <i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="about-section">
+        <div class="section-title-wrapper">
+            <h2>Sobre <span>Mí</span></h2>
+            <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
+        </div>
+        <p class="about-description">
+            Desarrolladora web con pasión por crear soluciones digitales innovadoras. Me especializo en el desarrollo front-end y en crear interfaces intuitivas.
+        </p>
+    </section>
+
+    <section id="habilidades" class="skills-section">
+        <div class="section-title-wrapper">
+            <h2>Mis <span>Habilidades</span></h2>
+            <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
+        </div>
+
+        <div class="skills-carousel-wrapper">
+            <button class="nav-arrow"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5" style="color: #e34f26;"></i>
+                    <span>HTML</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt" style="color: #1572b6;"></i>
+                    <span>CSS</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-square-js" style="color: #f7df1e;"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-react" style="color: #61dafb;"></i>
+                    <span>React</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-git-alt" style="color: #f05032;"></i>
+                    <span>Git</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-figma" style="color: #a259ff;"></i>
+                    <span>Figma</span>
+                </div>
+            </div>
+
+            <button class="nav-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="dots-pagination">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem;">¿Hablamos de un <span style="color: var(--accent-pink);">Proyecto</span>?</h2>
+        <div class="contact-buttons">
+            <a href="https://wa.me/tu-numero-de-whatsapp" target="_blank" class="contact-btn whatsapp">
+                💬 Escríbeme por WhatsApp
+            </a>
+            <a href="mailto:tu-correo@email.com" class="contact-btn email">
+                ✉️ Enviar un Correo
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Lorena Lopez. Todos los derechos reservados.</p>
+        </footer>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('galaxy-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const particleCount = 2200;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() { this.init(); }
+            init() {
+                const distRatio = Math.pow(Math.random(), 2.2);
+                this.radius = distRatio * (Math.max(width, height) * 0.7);
+                const arms = 2;
+                const armOffset = (Math.floor(Math.random() * arms) * (Math.PI * 2 / arms));
+                this.angle = armOffset + (this.radius * 0.0015);
+                this.spreadX = (Math.random() - 0.5) * (this.radius * 0.2);
+                this.spreadY = (Math.random() - 0.5) * (this.radius * 0.2);
+                this.spinSpeed = 0.0003 + (1 / (this.radius + 80)) * 0.2;
+                this.size = Math.random() * 1.6 + 0.4;
+                const colors = ['#c084fc', '#d946ef', '#9333ea', '#60a5fa', '#ffffff', '#ff8a00'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.alpha = Math.random() * 0.8 + 0.2;
+            }
+            update() {
+                this.angle += this.spinSpeed;
+                this.x = (width / 2) + Math.cos(this.angle) * this.radius + this.spreadX;
+                this.y = (height / 2) + Math.sin(this.angle) * this.radius + this.spreadY;
+            }
+            draw() {
+                ctx.save();
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initGalaxy() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(3, 0, 8, 0.3)';
+            ctx.fillRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        initGalaxy();
+        animate();
+    </script>
+</body>
+</html>
