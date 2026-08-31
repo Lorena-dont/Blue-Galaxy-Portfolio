@@ -223,7 +223,7 @@
             font-weight: 300;
         }
 
-        /* SECCIÓN HABILIDADES (CARDS DE LA IMAGEN) */
+        /* SECCIÓN HABILIDADES */
         .skills-section {
             position: relative;
             z-index: 2;
@@ -318,6 +318,110 @@
             box-shadow: 0 0 8px var(--accent-color);
         }
 
+        /* SECCIÓN PROYECTOS (NUEVA Y RESTRUCTURADA) */
+        .projects-section {
+            position: relative;
+            z-index: 2;
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(18, 12, 28, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(217, 70, 239, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .project-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(217, 70, 239, 0.15);
+            color: var(--accent-pink);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(217, 70, 239, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--btn-gradient);
+            border-color: transparent;
+            color: #fff;
+        }
+
         /* CONTACTO & FOOTER */
         .contact-section {
             background-color: #030008;
@@ -375,7 +479,7 @@
                 <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre Mí</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -389,7 +493,7 @@
             <div class="divider-sparkle">✦ ─── ✦</div>
             <p>Creo experiencias digitales modernas, funcionales y visualmente impactantes. Apasionada por el código y el diseño.</p>
             <div class="btn-group">
-                <a href="proyectos.html" class="btn btn-gradient">Ver Proyectos <i class="fa-solid fa-chevron-right"></i></a>
+                <a href="#proyectos" class="btn btn-gradient">Ver Proyectos <i class="fa-solid fa-chevron-right"></i></a>
                 <a href="#sobre-mi" class="btn btn-outline">Sobre Mí <i class="fa-regular fa-user"></i></a>
             </div>
         </div>
@@ -401,7 +505,7 @@
             <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
         </div>
         <p class="about-description">
-            Desarrolladora web con pasión por crear soluciones digitales innovadoras. Me especializo en el desarrollo front-end y en crear interfaces intuitivas.
+            Desarrolladora web con pasión por crear soluciones digitales innovadoras. Me especializo en el desarrollo front-end y en crear interfaces intuitivas y de alto rendimiento.
         </p>
     </section>
 
@@ -451,6 +555,66 @@
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
+        </div>
+    </section>
+
+    <section id="proyectos" class="projects-section">
+        <div class="section-title-wrapper" style="text-align: center;">
+            <h2>Mis <span>Proyectos</span></h2>
+            <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard Interactivo" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Dashboard Analítico</h3>
+                    <p class="project-description">Plataforma interactiva para visualizar métricas en tiempo real con gráficos personalizados y tema oscuro.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CSS Grid</span>
+                        <span class="tag">Chart.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Código</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Plataforma Web" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">E-Commerce Space</h3>
+                    <p class="project-description">Tienda virtual moderna con carrito de compras, filtros dinámicos y diseño adaptable a dispositivos móviles.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JS ES6</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Código</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Herramienta de Seguridad" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Cyber Guard Interface</h3>
+                    <p class="project-description">Interfaz web orientada a la monitorización de eventos de seguridad con un diseño futurista y limpio.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Styled Components</span>
+                        <span class="tag">Git</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Código</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
