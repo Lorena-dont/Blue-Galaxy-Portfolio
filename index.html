@@ -1,894 +1,293 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lorena Lopez | Portafolio Profesional</title>
-    
-    <!-- Fuentes y Fuentes de Iconos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-color: #030008;
-            --card-bg: rgba(15, 10, 26, 0.65);
-            --card-border: rgba(217, 70, 239, 0.2);
-            --text-color: #f1f5f9;
-            --text-muted: #94a3b8;
-            --accent-purple: #c084fc;
-            --accent-pink: #d946ef;
-            --accent-glow: rgba(217, 70, 239, 0.35);
-            --btn-gradient: linear-gradient(135deg, #e879f9 0%, #a855f7 50%, #6366f1 100%);
-            --whatsapp-color: #22c55e;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        h1, h2, h3, .logo {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* HEADER & NAVIGATION */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 8%;
-            background: rgba(3, 0, 8, 0.6);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 3px;
-            text-decoration: none;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        .logo span {
-            color: var(--accent-purple);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            font-weight: 400;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: #fff;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--btn-gradient);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-
-        nav ul li a:hover::after, nav ul li a.active::after {
-            width: 100%;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 140px 5% 60px 5%;
-            overflow: hidden;
-        }
-
-        #galaxy-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: all;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 780px;
-            background: var(--card-bg);
-            padding: 4.5rem 3.5rem;
-            border-radius: 32px;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9),
-                        0 0 40px var(--accent-glow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hero-content:hover {
-            border-color: rgba(217, 70, 239, 0.4);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95),
-                        0 0 50px rgba(217, 70, 239, 0.4);
-        }
-
-        .hero-content h1 {
-            font-size: 4.2rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-            background: linear-gradient(180deg, #ffffff 30%, #e2e8f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-content h2 {
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--accent-purple);
-            margin-bottom: 1.2rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        .divider-sparkle {
-            color: var(--accent-pink);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-            letter-spacing: 6px;
-        }
-
-        .hero-content p {
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.9rem 2.2rem;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-gradient {
-            background: var(--btn-gradient);
-            color: #fff;
-            border: none;
-            box-shadow: 0 4px 25px rgba(217, 70, 239, 0.4);
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(217, 70, 239, 0.6);
-        }
-
-        .btn-outline {
-            background: rgba(255, 255, 255, 0.03);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-purple);
-            background: rgba(192, 132, 252, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 20px rgba(192, 132, 252, 0.2);
-        }
-
-        /* SECCIONES COMUNES */
-        section {
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title-wrapper {
-            text-align: center;
-        }
-
-        .section-title-wrapper h2 {
-            font-size: 2.8rem;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .section-title-wrapper h2 span {
-            color: var(--accent-purple);
-            font-style: italic;
-        }
-
-        /* SOBRE MÍ */
-        .about-section {
-            padding: 6rem 5% 4rem 5%;
-            text-align: center;
-        }
-
-        .about-description {
-            max-width: 700px;
-            margin: 1.8rem auto 0 auto;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        /* HABILIDADES */
-        .skills-section {
-            padding: 4rem 5% 6rem 5%;
-            text-align: center;
-        }
-
-        .skills-carousel-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3.5rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .nav-arrow {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--accent-purple);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .nav-arrow:hover {
-            background: var(--accent-purple);
-            color: #fff;
-            box-shadow: 0 0 15px var(--accent-purple);
-            transform: scale(1.1);
-        }
-
-        .skills-grid {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 1.2rem 0.5rem;
-        }
-
-        .skills-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        .skill-card {
-            min-width: 130px;
-            height: 150px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 22px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent-pink);
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px var(--accent-glow);
-        }
-
-        .skill-card i {
-            font-size: 3rem;
-        }
-
-        .skill-card span {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            font-weight: 500;
-        }
-
-        /* PROYECTOS */
-        .projects-section {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3.5rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            overflow: hidden;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-pink);
-            box-shadow: 0 20px 40px var(--accent-glow);
-        }
-
-        .project-image-wrapper {
-            position: relative;
-            overflow: hidden;
-            height: 220px;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.08);
-        }
-
-        .project-content {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            line-height: 1.6;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .tag {
-            background: rgba(217, 70, 239, 0.12);
-            color: var(--accent-purple);
-            font-size: 0.78rem;
-            font-weight: 500;
-            padding: 0.35rem 0.9rem;
-            border-radius: 20px;
-            border: 1px solid rgba(217, 70, 239, 0.25);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            text-decoration: none;
-            color: #fff;
-            font-size: 0.88rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            background: var(--btn-gradient);
-            border-color: transparent;
-            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
-        }
-
-        /* CONTACTO & FOOTER */
-        .contact-section {
-            background: linear-gradient(180deg, var(--bg-color) 0%, #080214 100%);
-            text-align: center;
-            border-top: 1px solid rgba(217, 70, 239, 0.15);
-            padding: 6rem 5% 3rem 5%;
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin: 2.5rem 0;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.9rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        .contact-btn.whatsapp {
-            background-color: var(--whatsapp-color);
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
-        }
-
-        .contact-btn.whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
-        }
-
-        .contact-btn.email {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .contact-btn.email:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2.5rem 0 1rem 0;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content { padding: 3rem 1.8rem; }
-            .section-title-wrapper h2 { font-size: 2.2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- NAVEGACIÓN -->
-    <header>
-        <a href="index.html" class="logo">LORENA <span>LOPEZ</span></a>
-        <nav>
-            <ul>
-                <li><a href="#inicio" class="active">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION CON GALAXIA INTERACTIVA -->
-    <section id="inicio" class="hero">
-        <canvas id="galaxy-canvas"></canvas>
-        <div class="hero-content">
-            <h1>Lorena Lopez</h1>
-            <h2>Desarrolladora Web Front-End</h2>
-            <div class="divider-sparkle">✦ ─── ✦</div>
-            <p>Creo experiencias digitales modernas, interactivas y visualmente deslumbrantes. Apasionada por fusionar la precisión del código con la elegancia del diseño visual.</p>
-            <div class="btn-group">
-                <a href="#proyectos" class="btn btn-gradient">Ver Proyectos <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#sobre-mi" class="btn btn-outline">Sobre Mí <i class="fa-regular fa-user"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOBRE MÍ -->
-    <section id="sobre-mi" class="about-section">
-        <div class="section-title-wrapper">
-            <h2>Sobre <span>Mí</span></h2>
-            <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
-        </div>
-        <p class="about-description">
-            Especializada en la creación de interfaces web modernas y adaptables. Me enfoco en escribir código limpio, optimizado y centrado en la experiencia de usuario, combinando animaciones fluidas e interacciones intuitivas para dar vida a ideas innovadoras.
+<!-- =====================================================
+     SECCIÓN GALAXIA + EXPERIENCIA TECNOLÓGICA
+====================================================== -->
+
+<section class="galaxy-intro">
+    <canvas id="galaxyCanvas"></canvas>
+
+    <div class="galaxy-content">
+        <span class="tech-label">01 // EXPLORANDO EL FUTURO</span>
+
+        <h2>
+            Tecnología que
+            <span>va más allá</span>
+        </h2>
+
+        <p>
+            Un recorrido por programación, ciberseguridad,
+            inteligencia artificial y las tecnologías que
+            están transformando nuestro mundo.
         </p>
-    </section>
 
-    <!-- HABILIDADES -->
-    <section id="habilidades" class="skills-section">
-        <div class="section-title-wrapper">
-            <h2>Mis <span>Habilidades</span></h2>
-            <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
+        <div class="scroll-indicator">
+            ↓ SCROLL PARA EXPLORAR
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     EXPERIENCIA TECNOLÓGICA
+====================================================== -->
+
+<section class="tech-story">
+
+    <div class="story-title">
+        <span>02 // TECHNOLOGY</span>
+        <h2>Explorando el mundo<br><strong>digital</strong></h2>
+    </div>
+
+
+    <!-- BLOQUE 1 -->
+    <article class="tech-block reveal">
+
+        <div class="tech-image">
+            <img src="imagenes/cybersecurity.jpg" alt="Ciberseguridad">
+            <div class="image-number">01</div>
         </div>
 
-        <div class="skills-carousel-wrapper">
-            <button class="nav-arrow" id="slide-left"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="tech-card">
+            <span>CYBERSECURITY</span>
+            <h3>La seguridad detrás de la tecnología</h3>
 
-            <div class="skills-grid" id="skills-container">
-                <div class="skill-card">
-                    <i class="fa-brands fa-html5" style="color: #e34f26;"></i>
-                    <span>HTML5</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fa-brands fa-css3-alt" style="color: #1572b6;"></i>
-                    <span>CSS3</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fa-brands fa-square-js" style="color: #f7df1e;"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fa-brands fa-react" style="color: #61dafb;"></i>
-                    <span>React</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fa-brands fa-git-alt" style="color: #f05032;"></i>
-                    <span>Git</span>
-                </div>
-                <div class="skill-card">
-                    <i class="fa-brands fa-figma" style="color: #a259ff;"></i>
-                    <span>Figma</span>
-                </div>
-            </div>
+            <p>
+                La ciberseguridad protege sistemas, redes,
+                aplicaciones y datos frente a amenazas digitales.
+            </p>
 
-            <button class="nav-arrow" id="slide-right"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <!-- PROYECTOS -->
-    <section id="proyectos" class="projects-section">
-        <div class="section-title-wrapper">
-            <h2>Proyectos <span>Destacados</span></h2>
-            <div class="divider-sparkle" style="margin-top: 0.5rem;">✦</div>
-        </div>
-
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard Analítico" class="project-image">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Dashboard Analítico</h3>
-                    <p class="project-description">Plataforma interactiva para visualizar métricas en tiempo real con gráficos personalizados y tema oscuro.</p>
-                    <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">CSS Grid</span>
-                        <span class="tag">Chart.js</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Código</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Space" class="project-image">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">E-Commerce Space</h3>
-                    <p class="project-description">Tienda virtual moderna con carrito de compras, filtros dinámicos y diseño completamente adaptable.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JS ES6</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Código</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Cyber Guard Interface" class="project-image">
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Cyber Guard Interface</h3>
-                    <p class="project-description">Interfaz web orientada a la monitorización de eventos de seguridad con un estilo futurista.</p>
-                    <div class="project-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Styled Components</span>
-                        <span class="tag">Git</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                        <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Código</a>
-                    </div>
-                </div>
+            <div class="fact">
+                <strong>¿SABÍAS QUE?</strong>
+                <p>
+                    Una gran parte de los ataques informáticos
+                    comienza aprovechando errores humanos.
+                </p>
             </div>
         </div>
-    </section>
 
-    <!-- CONTACTO & FOOTER -->
-    <section id="contacto" class="contact-section">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">¿Diseñamos algo <span style="color: var(--accent-purple); font-style: italic;">extraordinario</span>?</h2>
-        <div class="contact-buttons">
-            <a href="https://wa.me/tu-numero" target="_blank" class="contact-btn whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> Escríbeme por WhatsApp
-            </a>
-            <a href="mailto:tu-correo@email.com" class="contact-btn email">
-                <i class="fa-regular fa-envelope"></i> Enviar un Correo
-            </a>
+    </article>
+
+
+    <!-- BLOQUE 2 -->
+    <article class="tech-block reverse reveal">
+
+        <div class="tech-image">
+            <img src="imagenes/programacion.jpg" alt="Programación">
+            <div class="image-number">02</div>
         </div>
 
-        <footer>
-            <p>&copy; 2026 Lorena Lopez. Todos los derechos reservados.</p>
-        </footer>
-    </section>
+        <div class="tech-card">
+            <span>PROGRAMMING</span>
+            <h3>Convertir ideas en código</h3>
 
-    <!-- MOTOR DE GALAXIA CÓSMICA INTERACTIVA -->
-    <script>
-        const canvas = document.getElementById('galaxy-canvas');
-        const ctx = canvas.getContext('2d');
+            <p>
+                Programar permite transformar una idea en una
+                aplicación, herramienta o experiencia digital.
+            </p>
 
-        let width, height;
-        let particles = [];
-        let comets = [];
-        const particleCount = 1800;
+            <div class="fact">
+                <strong>CURIOSIDAD</strong>
+                <p>
+                    JavaScript fue creado en aproximadamente
+                    diez días durante 1995.
+                </p>
+            </div>
+        </div>
 
-        // Rastreo del ratón para interactividad
-        const mouse = { x: null, y: null, radius: 150 };
+    </article>
 
-        window.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
 
-        window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
+    <!-- BLOQUE 3 -->
+    <article class="tech-block reveal">
 
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
+        <div class="tech-image">
+            <img src="imagenes/artificial-intelligence.jpg"
+                 alt="Inteligencia artificial">
 
-        // Partícula Galáctica
-        class Particle {
-            constructor() { this.init(); }
+            <div class="image-number">03</div>
+        </div>
 
-            init() {
-                const distRatio = Math.pow(Math.random(), 2.2);
-                this.baseRadius = distRatio * (Math.max(width, height) * 0.65);
-                const arms = 2;
-                const armOffset = Math.floor(Math.random() * arms) * (Math.PI * 2 / arms);
-                
-                this.angle = armOffset + (this.baseRadius * 0.0012);
-                this.spreadX = (Math.random() - 0.5) * (this.baseRadius * 0.25);
-                this.spreadY = (Math.random() - 0.5) * (this.baseRadius * 0.25);
-                this.spinSpeed = 0.0002 + (1 / (this.baseRadius + 100)) * 0.15;
-                
-                this.size = Math.random() * 1.8 + 0.3;
-                
-                const colors = ['#c084fc', '#d946ef', '#a855f7', '#60a5fa', '#f472b6', '#ffffff'];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.7 + 0.3;
-                
-                // Efecto Centello (Twinkle)
-                this.twinkleSpeed = Math.random() * 0.02 + 0.005;
-            }
+        <div class="tech-card">
+            <span>ARTIFICIAL INTELLIGENCE</span>
 
-            update() {
-                this.angle += this.spinSpeed;
-                
-                // Posición base rotacional
-                let targetX = (width / 2) + Math.cos(this.angle) * this.baseRadius + this.spreadX;
-                let targetY = (height / 2) + Math.sin(this.angle) * this.baseRadius + this.spreadY;
+            <h3>Máquinas que aprenden</h3>
 
-                // Interactividad con el cursor
-                if (mouse.x !== null && mouse.y !== null) {
-                    const dx = targetX - mouse.x;
-                    const dy = targetY - mouse.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+            <p>
+                La inteligencia artificial permite desarrollar
+                sistemas capaces de analizar información y
+                encontrar patrones.
+            </p>
 
-                    if (dist < mouse.radius) {
-                        const force = (1 - dist / mouse.radius) * 25;
-                        const angle = Math.atan2(dy, dx);
-                        targetX += Math.cos(angle) * force;
-                        targetY += Math.sin(angle) * force;
-                    }
-                }
+            <div class="fact">
+                <strong>TECH FACT</strong>
+                <p>
+                    Los modelos de IA pueden analizar enormes
+                    cantidades de información en poco tiempo.
+                </p>
+            </div>
+        </div>
 
-                this.x = targetX;
-                this.y = targetY;
+    </article>
 
-                // Parpadeo de brillo
-                this.alpha += Math.sin(Date.now() * this.twinkleSpeed) * 0.01;
-                this.alpha = Math.max(0.2, Math.min(0.9, this.alpha));
-            }
 
-            draw() {
-                ctx.save();
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
+    <!-- BLOQUE 4 -->
+    <article class="tech-block reverse reveal">
 
-        // Cometas Esporádicos
-        class Comet {
-            constructor() { this.reset(); }
+        <div class="tech-image">
+            <img src="imagenes/network.jpg" alt="Redes informáticas">
 
-            reset() {
-                this.x = Math.random() * width;
-                this.y = -20;
-                this.length = Math.random() * 80 + 40;
-                this.speed = Math.random() * 4 + 3;
-                this.size = Math.random() * 1.5 + 0.8;
-                this.alpha = 1;
-                this.active = Math.random() < 0.3; // Aparición aleatoria
-            }
+            <div class="image-number">04</div>
+        </div>
 
-            update() {
-                if (!this.active) {
-                    if (Math.random() < 0.002) this.active = true;
-                    return;
-                }
+        <div class="tech-card">
+            <span>NETWORKS</span>
 
-                this.x += this.speed;
-                this.y += this.speed * 1.2;
-                this.alpha -= 0.008;
+            <h3>El mundo conectado</h3>
 
-                if (this.y > height || this.alpha <= 0) {
-                    this.reset();
-                }
-            }
+            <p>
+                Las redes permiten que dispositivos y sistemas
+                intercambien información alrededor del mundo.
+            </p>
 
-            draw() {
-                if (!this.active) return;
+            <div class="fact">
+                <strong>¿SABÍAS QUE?</strong>
+                <p>
+                    Internet está formado por millones de redes
+                    interconectadas.
+                </p>
+            </div>
+        </div>
 
-                ctx.save();
-                const gradient = ctx.createLinearGradient(
-                    this.x, this.y, 
-                    this.x - this.length * 0.7, this.y - this.length * 0.8
-                );
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.alpha})`);
-                gradient.addColorStop(0.3, `rgba(217, 70, 239, ${this.alpha * 0.6})`);
-                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    </article>
 
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = this.size;
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x - this.length * 0.7, this.y - this.length * 0.8);
-                ctx.stroke();
-                ctx.restore();
-            }
-        }
 
-        // Inicialización
-        function initGalaxy() {
-            particles = [];
-            comets = [];
-            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
-            for (let i = 0; i < 3; i++) comets.push(new Comet());
-        }
+    <!-- BLOQUE 5 -->
+    <article class="tech-block reveal">
 
-        // Animación Continua
-        function animate() {
-            // Fondo traslúcido para rastro galáctico
-            ctx.fillStyle = 'rgba(3, 0, 8, 0.25)';
-            ctx.fillRect(0, 0, width, height);
+        <div class="tech-image">
+            <img src="imagenes/code.jpg" alt="Código">
 
-            // Resplandor del núcleo central (Nebulosa)
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const coreGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, Math.max(width, height) * 0.4);
-            coreGradient.addColorStop(0, 'rgba(192, 132, 252, 0.08)');
-            coreGradient.addColorStop(0.5, 'rgba(217, 70, 239, 0.03)');
-            coreGradient.addColorStop(1, 'transparent');
-            
-            ctx.fillStyle = coreGradient;
-            ctx.fillRect(0, 0, width, height);
+            <div class="image-number">05</div>
+        </div>
 
-            // Renderizado de elementos
-            particles.forEach(p => { p.update(); p.draw(); });
-            comets.forEach(c => { c.update(); c.draw(); });
+        <div class="tech-card">
+            <span>DEVELOPMENT</span>
 
-            requestAnimationFrame(animate);
-        }
+            <h3>Detrás de cada aplicación</h3>
 
-        initGalaxy();
-        animate();
+            <p>
+                HTML estructura una página, CSS define su
+                apariencia y JavaScript permite agregar
+                comportamiento e interacción.
+            </p>
 
-        // Control del carrusel de habilidades
-        const container = document.getElementById('skills-container');
-        document.getElementById('slide-left').onclick = () => container.scrollBy({ left: -200, behavior: 'smooth' });
-        document.getElementById('slide-right').onclick = () => container.scrollBy({ left: 200, behavior: 'smooth' });
-    </script>
-</body>
-</html>
+            <div class="fact">
+                <strong>CODE</strong>
+                <p>
+                    Una página web moderna puede combinar
+                    cientos de tecnologías diferentes.
+                </p>
+            </div>
+        </div>
+
+    </article>
+
+
+    <!-- BLOQUE 6 -->
+    <article class="tech-block reverse reveal">
+
+        <div class="tech-image">
+            <img src="imagenes/server.jpg" alt="Servidores">
+
+            <div class="image-number">06</div>
+        </div>
+
+        <div class="tech-card">
+            <span>SERVERS</span>
+
+            <h3>La infraestructura invisible</h3>
+
+            <p>
+                Los servidores permiten almacenar información,
+                ejecutar aplicaciones y proporcionar servicios
+                a millones de usuarios.
+            </p>
+
+            <div class="fact">
+                <strong>TECH FACT</strong>
+                <p>
+                    Muchos servicios digitales funcionan
+                    simultáneamente sobre miles de servidores.
+                </p>
+            </div>
+        </div>
+
+    </article>
+
+
+    <!-- BLOQUE 7 -->
+    <article class="tech-block reveal">
+
+        <div class="tech-image">
+            <img src="imagenes/hardware.jpg" alt="Hardware">
+
+            <div class="image-number">07</div>
+        </div>
+
+        <div class="tech-card">
+            <span>HARDWARE</span>
+
+            <h3>La tecnología que podemos tocar</h3>
+
+            <p>
+                Procesadores, memorias, discos y tarjetas
+                gráficas forman parte de la infraestructura
+                física de nuestros dispositivos.
+            </p>
+
+            <div class="fact">
+                <strong>CURIOSIDAD</strong>
+                <p>
+                    Un procesador moderno puede ejecutar
+                    miles de millones de operaciones por segundo.
+                </p>
+            </div>
+        </div>
+
+    </article>
+
+
+    <!-- BLOQUE 8 -->
+    <article class="tech-block reverse reveal">
+
+        <div class="tech-image">
+            <img src="imagenes/future.jpg" alt="Tecnología del futuro">
+
+            <div class="image-number">08</div>
+        </div>
+
+        <div class="tech-card personal">
+
+            <span>MY JOURNEY</span>
+
+            <h3>Mi camino en tecnología</h3>
+
+            <p>
+                [AQUÍ COLOCA TU INFORMACIÓN REAL]
+                <br><br>
+                Mis conocimientos, proyectos, objetivos
+                profesionales y mi evolución dentro del mundo
+                tecnológico.
+            </p>
+
+            <div class="fact">
+                <strong>MI OBJETIVO</strong>
+                <p>
+                    [ESCRIBE AQUÍ TU OBJETIVO PROFESIONAL]
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
