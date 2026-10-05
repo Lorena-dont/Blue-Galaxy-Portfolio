@@ -1,135 +1,68 @@
-const canvas = document.getElementById('galaxy-canvas');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-let particles = [];
-const particleCount = 2800;
-
-// Estado del ratón para interactividad
-let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
-
-function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    mouse.x = width / 2;
-    mouse.y = height / 2;
-    mouse.targetX = width / 2;
-    mouse.targetY = height / 2;
-}
-
-window.addEventListener('resize', resize);
-window.addEventListener('mousemove', (e) => {
-    mouse.targetX = e.clientX;
-    mouse.targetY = e.clientY;
-});
-
-window.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-        mouse.targetX = e.touches[0].clientX;
-        mouse.targetY = e.touches[0].clientY;
-    }
-});
-
-resize();
-
-class Particle {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        const distRatio = Math.pow(Math.random(), 2.5);
-        this.radius = distRatio * (Math.max(width, height) * 0.65);
-        
-        const arms = 2; // Brazos espirales
-        const armOffset = (Math.floor(Math.random() * arms) * (Math.PI * 2 / arms));
-        this.angle = armOffset + (this.radius * 0.0012);
-        
-        this.spreadX = (Math.random() - 0.5) * (this.radius * 0.22);
-        this.spreadY = (Math.random() - 0.5) * (this.radius * 0.22);
-        
-        this.spinSpeed = 0.0002 + (1 / (this.radius + 60)) * 0.18;
-        this.size = Math.random() * 1.8 + 0.3;
-        
-        const colors = ['#c084fc', '#d946ef', '#a855f7', '#38bdf8', '#ffffff', '#e879f9'];
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        
-        this.baseAlpha = Math.random() * 0.7 + 0.2;
-        this.alpha = this.baseAlpha;
-        this.twinkleSpeed = Math.random() * 0.02 + 0.005;
-    }
-
-    update() {
-        this.angle += this.spinSpeed;
-        
-        // Efecto de parpadeo suave
-        this.alpha += Math.sin(Date.now() * this.twinkleSpeed) * 0.008;
-        this.alpha = Math.max(0.1, Math.min(0.9, this.alpha));
-
-        const rawX = Math.cos(this.angle) * this.radius + this.spreadX;
-        const rawY = Math.sin(this.angle) * this.radius + this.spreadY;
-
-        // Movimiento de cámara/paralaje con el cursor
-        const offsetX = (mouse.x - width / 2) * (0.05 * (this.radius / (width * 0.5)));
-        const offsetY = (mouse.y - height / 2) * (0.05 * (this.radius / (height * 0.5)));
-
-        this.x = (width / 2) + rawX + offsetX;
-        this.y = (height / 2) + rawY + offsetY;
-    }
-
-    draw() {
-        ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.globalAlpha = this.alpha;
-        
-        if (this.size > 1.4) {
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = this.color;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí | Lorena Lopez</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #121019;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #a855f7;
+            --accent-secondary: #3b82f6;
         }
 
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-    }
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding-top: 100px; }
 
-function drawCoreGlow() {
-    const coreX = (width / 2) + (mouse.x - width / 2) * 0.02;
-    const coreY = (height / 2) + (mouse.y - height / 2) * 0.02;
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 5%; background-color: rgba(0, 0, 0, 0.9);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+        }
 
-    const gradient = ctx.createRadialGradient(coreX, coreY, 5, coreX, coreY, width * 0.35);
-    gradient.addColorStop(0, 'rgba(217, 70, 239, 0.22)');
-    gradient.addColorStop(0.4, 'rgba(147, 51, 234, 0.08)');
-    gradient.addColorStop(1, 'rgba(3, 0, 8, 0)');
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent-color); letter-spacing: 2px; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav ul li a { text-decoration: none; color: var(--text-color); transition: color 0.3s; font-weight: 500; }
+        nav ul li a:hover, nav ul li a.active { color: var(--accent-color); }
 
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, width, height);
-}
+        section { padding: 4rem 5%; max-width: 900px; margin: 0 auto; }
+        h2.section-title { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+        h2.section-title span { color: var(--accent-color); }
 
-function initGalaxy() {
-    particles = [];
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-}
+        .about-container {
+            background-color: var(--card-bg); padding: 3rem; border-radius: 15px;
+            border: 1px solid rgba(168, 85, 247, 0.3); box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+        }
+        .about-container p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 1.5rem; }
 
-function animate() {
-    mouse.x += (mouse.targetX - mouse.x) * 0.05;
-    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+        footer { text-align: center; padding: 3rem; color: var(--text-muted); border-top: 1px solid rgba(168, 85, 247, 0.2); margin-top: 5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">LORENA LOPEZ</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html" class="active">Sobre mí</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    ctx.fillStyle = 'rgba(3, 0, 8, 0.25)';
-    ctx.fillRect(0, 0, width, height);
+    <section>
+        <h2 class="section-title">Sobre <span>Mí</span></h2>
+        <div class="about-container">
+            <p> ¡Realmente buscas algo inovador, que deje a detalle todas tus ideas, y que sea un diseño unico! <p>
+                
+            </p>
 
-    drawCoreGlow();
+    </section>
 
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
-
-    requestAnimationFrame(animate);
-}
-
-initGalaxy();
-animate();
+    <footer><p>&copy; 2026 Lorena Lopez. Todos los derechos reservados.</p></footer>
+</body>
+</html>
