@@ -1,188 +1,75 @@
-:root {
-    --bg-color: #030008;
-    --card-bg: rgba(18, 16, 25, 0.75);
-    --text-color: #f8fafc;
-    --text-muted: #cbd5e1;
-    --accent-color: #a855f7;
-    --accent-secondary: #38bdf8;
-    --glow-color: rgba(168, 85, 247, 0.4);
-    --border-color: rgba(168, 85, 247, 0.25);
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | Lorena Lopez</title>
+    <!-- Fuentes elegantes igual que en la portada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
+    <!-- Fondo de Galaxia -->
+    <canvas id="galaxy-canvas"></canvas>
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.7;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
+    <!-- Header / Navegación -->
+    <header>
+        <div class="logo">LORENA LOPEZ</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#sobre-mi">Sobre Mí</a></li>
+                <li><a href="index.html#habilidades">Habilidades</a></li>
+                <li><a href="proyectos.html" class="active">Proyectos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-/* Canvas de fondo galáctico */
-#galaxy-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
+    <main>
+        <section class="section-container">
+            <h1 class="section-title">Mis <span class="highlight">Proyectos</span></h1>
+            <div class="sparkle-divider">✦</div>
+            <p class="section-description">
+                Una selección de mis trabajos recientes en desarrollo web front-end e interfaces interactivas.
+            </p>
 
-/* Encabezado */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 8%;
-    background: rgba(3, 0, 8, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-}
+            <!-- Grid de Proyectos con estilo Glassmorphism -->
+            <div class="projects-grid" style="margin-top: 3rem;">
+                
+                <article class="project-card">
+                    <h3>Portafolio Galaxia Creado</h3>
+                    <p>Sitio web personal interactivo con animaciones en Canvas de JavaScript, diseño totalmente adaptativo y estética espacial.</p>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </article>
 
-.logo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text-color);
-    text-decoration: none;
-    letter-spacing: 2px;
-}
+                <article class="project-card">
+                    <h3>Proyecto Web Dos</h3>
+                    <p>Aplicación web enfocada en experiencia de usuario, diseño intuitivo y optimización móvil.</p>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">CSS Modules</span>
+                </article>
 
-.logo span {
-    color: var(--accent-color);
-}
+                <article class="project-card">
+                    <h3>Proyecto Web Tres</h3>
+                    <p>Plataforma con integración de APIs y maquetación responsiva avanzada.</p>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Git</span>
+                </article>
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2.2rem;
-}
+            </div>
 
-nav ul li a {
-    text-decoration: none;
-    color: var(--text-muted);
-    transition: all 0.3s ease;
-    font-weight: 500;
-    font-size: 0.95rem;
-    position: relative;
-}
+            <div style="margin-top: 4rem;">
+                <a href="index.html" class="btn btn-outline">‹ Volver al Inicio</a>
+            </div>
+        </section>
+    </main>
 
-nav ul li a:hover,
-nav ul li a.active {
-    color: var(--accent-color);
-    text-shadow: 0 0 10px var(--glow-color);
-}
-
-nav ul li a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent-color);
-    box-shadow: 0 0 8px var(--accent-color);
-    border-radius: 2px;
-}
-
-/* Contenido Principal */
-main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 5% 60px;
-}
-
-.about-section {
-    max-width: 850px;
-    width: 100%;
-}
-
-h2.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-weight: 700;
-}
-
-h2.section-title span {
-    color: var(--accent-color);
-    text-shadow: 0 0 15px var(--glow-color);
-}
-
-.about-container {
-    background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    padding: 2.8rem;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
-    transition: border-color 0.3s ease;
-}
-
-.about-container:hover {
-    border-color: rgba(168, 85, 247, 0.5);
-}
-
-.about-container p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.about-container p strong {
-    color: var(--accent-secondary);
-}
-
-/* Etiquetas de Habilidades */
-.skills-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.skills-tags span {
-    background: rgba(168, 85, 247, 0.12);
-    color: #e9d5ff;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-/* Pie de Página */
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--border-color);
-    background: rgba(3, 0, 8, 0.9);
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    header { padding: 1rem 5%; }
-    nav ul { gap: 1.2rem; }
-    .about-container { padding: 1.8rem; }
-    h2.section-title { font-size: 2rem; }
-}
+    <script src="script.js"></script>
+</body>
+</html>
